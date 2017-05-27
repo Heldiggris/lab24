@@ -56,12 +56,11 @@ void token_next(Token *t)
         if (isdigit(c)) {
             ungetc(c, stdin);
             token_next(t);
-
             if (t->type == INTEGER)
                 t->data.value_int *= m;
             else
                 t->data.value_float *= m;
-        } else {
+         } else {
             ungetc(c, stdin);
             t->type = OPERATOR;
             t->data.operator = '-';
@@ -84,7 +83,7 @@ void token_print(Token *t)
             break;
 
         case INTEGER:
-            printf("%u", t->data.value_int);
+            printf("%d", t->data.value_int);
             break;
 
         case FLOATING:
